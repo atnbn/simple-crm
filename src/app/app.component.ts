@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
 
 
 
@@ -13,8 +11,7 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'simple-crm';
 
-  constructor(_firestore: AngularFirestore) {
-    
+  constructor(){
   }
 
   
