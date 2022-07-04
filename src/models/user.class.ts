@@ -1,4 +1,7 @@
 export class User{
+  toJson(): unknown {
+    throw new Error('Method not implemented.');
+  }
     firstName :string;
     lastName: string;
     birthDate: number; 

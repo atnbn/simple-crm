@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialogRef } from '@angular/material/dialog';
+import {FormControl, Validators} from '@angular/forms';
 import { User } from 'src/models/user.class';
+import { Firestore } from '@angular/fire/firestore';
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 @Component({
   selector: 'app-dialog-add-user',
   templateUrl: './dialog-add-user.component.html',
@@ -21,8 +26,7 @@ export class DialogAddUserComponent implements OnInit {
 
     this.firestore
     .collection('users')
-    .add(this.user)
-    .then((result:any) =>{
+    .add(this.user.toJson()).then((result: any) =>{
       console.log('adding user finish , result')
     })
   }
