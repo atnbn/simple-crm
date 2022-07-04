@@ -1,7 +1,5 @@
 export class User{
-  toJson(): unknown {
-    throw new Error('Method not implemented.');
-  }
+
     firstName :string;
     lastName: string;
     birthDate: number; 
@@ -20,4 +18,16 @@ export class User{
 
     
     }
-}
+
+    public toJSON(){
+      return{
+        birthDate: this.birthDate,
+        firstName :this.firstName, 
+        lastName: this.lastName,
+        street: this.street,
+        zipCode: this.zipCode,
+        city: this.city     
+      }
+    }
+  }
+

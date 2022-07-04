@@ -21,13 +21,16 @@ export class DialogAddUserComponent implements OnInit {
 
 
   saveUser(){
-    this.user.birthDate = this.birthDate.getTime();
+    this.user.birthDate! = this.birthDate.getTime();
     console.log('current User is', this.user)
-
     this.firestore
     .collection('users')
-    .add(this.user.toJson()).then((result: any) =>{
-      console.log('adding user finish , result')
+    .add(this.user.toJSON())
+    .then((result_:any) => {
+      console.log('Adding user finished', result_)
+
     })
+  
+
   }
 }
