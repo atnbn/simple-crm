@@ -16,7 +16,7 @@ export class UserDetailComponent implements OnInit {
   userId = '';
   user: User = new User; // from array to Class
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore,
-     public dialog: MatDialog) { }
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -41,10 +41,16 @@ export class UserDetailComponent implements OnInit {
 
   }
 
-  editMenu(){
-    this.dialog.open(DialogEditAddressComponent);
+  editMenu() {
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON()); // create a Copi from User
+    dialog.componentInstance.userId = this.userId
+ 
   }
+  editUserDetail() {
+    const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON()); // create a Copi from User
+    dialog.componentInstance.userId = this.userId
 
-  editUserDetail(){
-    this.dialog.open(DialogEditUserComponent);
-}}
+  }
+}
